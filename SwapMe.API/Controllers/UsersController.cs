@@ -6,7 +6,7 @@ using SwapMe.Application.Validators;
 namespace SwapMe.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class UsersController : ControllerBase
 {
     private readonly IUsersCommandHandler _commandHandler;
@@ -18,7 +18,7 @@ public class UsersController : ControllerBase
         _logger = logger;
     }
 
-    [HttpPost(Name = "Create")]
+    [HttpPost(Name = "create")]
     public async Task<IActionResult> PostAsync([FromBody] CreateUserCommand command)
     {
         using (_logger.BeginScope(command.Login))

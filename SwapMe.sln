@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapMe.Domain", "SwapMe.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapMe.Application", "SwapMe.Application\SwapMe.Application.csproj", "{68317A9B-0FF9-4059-BF4A-4FFA1C7675C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapMe.Unit", "SwapMe.Unit\SwapMe.Unit.csproj", "{10006AD5-CC0D-42C5-9023-15931984FC74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{68317A9B-0FF9-4059-BF4A-4FFA1C7675C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68317A9B-0FF9-4059-BF4A-4FFA1C7675C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68317A9B-0FF9-4059-BF4A-4FFA1C7675C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10006AD5-CC0D-42C5-9023-15931984FC74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10006AD5-CC0D-42C5-9023-15931984FC74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10006AD5-CC0D-42C5-9023-15931984FC74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10006AD5-CC0D-42C5-9023-15931984FC74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using SwapMe.Application.Abstractions;
 using SwapMe.Application.Handlers.Abstractions;
 using SwapMe.Domain.Users;
