@@ -4,6 +4,7 @@ namespace SwapMe.Application.Abstractions;
 
 public interface IUsersService
 {
-    Task<User?> GetUserByLoginAsync(string login);
-    Task<User> CreateUserAsync(User user);
+    Task<User?> GetByLoginAsync(string login);
+    Task<User> CreateAsync(User user);
+    Task<User?> GetByIdAsync(long id);
 }

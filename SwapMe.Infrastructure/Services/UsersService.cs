@@ -14,13 +14,19 @@ public class UsersService : IUsersService
         _context = context;
     }
 
-    public async Task<User?> GetUserByLoginAsync(string login)
+    public async Task<User?> GetByLoginAsync(string login)
     {
         return await _context.Users.FirstOrDefaultAsync(u => 
-            u.Login.Equals(login, StringComparison.InvariantCultureIgnoreCase));
+            u.Login.Equals(login));
+    }
+    
+    public async Task<User?> GetByIdAsync(long id)
+    {
+        return await _context.Users.FirstOrDefaultAsync(u => 
+            u.UserId == id);
     }
 
-    public async Task<User> CreateUserAsync(User user)
+    public async Task<User> CreateAsync(User user)
     {
         await _context.Users.AddAsync(user);
         await _context.SaveChangesAsync();

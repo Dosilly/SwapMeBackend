@@ -1,8 +1,6 @@
-﻿using AutoBogus;
-using Bogus;
+﻿using Bogus;
 using RestSharp;
-using SwapMe.Application.Handlers.Users;
-using SwapMe.Domain.Users;
+using SwapMe.Application.Handlers.Users.Requests;
 
 namespace SwapMe.Unit.Population;
 
@@ -21,14 +19,14 @@ public class UsersPopulation
     {
         const int GeneratedUsers = 1000;
         
-        var usersFaker = new Faker<CreateUserCommand>("pl")
-            .CustomInstantiator(f => new CreateUserCommand(
+        var usersFaker = new Faker<CreateUserRequest>("pl")
+            .CustomInstantiator(f => new CreateUserRequest(
                 f.Internet.UserName(),
                 f.Internet.Password(),
                 f.Person.FirstName,
                 f.Person.LastName,
                 f.Internet.Email(f.Person.FirstName, f.Person.LastName),
-                long.Parse(f.Phone.PhoneNumber("#########")),
+                f.Phone.PhoneNumber("#########"),
                 f.Address.City(),
                 f.Address.State()
             ));
