@@ -11,7 +11,7 @@ public record CreateUserRequest(
     string PhoneNumber,
     string City,
     string State);
-    
+
 public class CreateUserValidator : AbstractValidator<CreateUserRequest>
 {
     public CreateUserValidator()

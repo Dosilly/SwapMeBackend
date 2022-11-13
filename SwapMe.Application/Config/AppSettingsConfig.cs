@@ -1,6 +1,8 @@
 ﻿namespace SwapMe.Application.Config;
 
-public record AppSettingsConfig
+public record JwtSettings
 {
-    public string JwtSecret { get; set; } = string.Empty;
+    public string JwtSecret { get; init; } = string.Empty;
+    public string Issuer { get; init; } = string.Empty;
+    public string Audience { get; init; } = string.Empty;
 }

@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace SwapMe.Application.Handlers.Users.Requests;
+namespace SwapMe.Application.Handlers.Authentication;
 
 public record AuthenticationRequest(string Login, string Password);
 
@@ -10,5 +10,5 @@ public class AuthenticationRequestValidator : AbstractValidator<AuthenticationRe
     {
         RuleFor(r => r.Login).NotEmpty();
         RuleFor(r => r.Password).NotEmpty();
-    }   
+    }
 }

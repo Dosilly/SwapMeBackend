@@ -16,13 +16,13 @@ public class UsersService : IUsersService
 
     public async Task<User?> GetByLoginAsync(string login)
     {
-        return await _context.Users.FirstOrDefaultAsync(u => 
+        return await _context.Users.FirstOrDefaultAsync(u =>
             u.Login.Equals(login));
     }
-    
+
     public async Task<User?> GetByIdAsync(long id)
     {
-        return await _context.Users.FirstOrDefaultAsync(u => 
+        return await _context.Users.FirstOrDefaultAsync(u =>
             u.UserId == id);
     }
 
@@ -30,7 +30,7 @@ public class UsersService : IUsersService
     {
         await _context.Users.AddAsync(user);
         await _context.SaveChangesAsync();
-        
+
         return user;
     }
 }

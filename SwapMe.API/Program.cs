@@ -1,26 +1,24 @@
-using Microsoft.EntityFrameworkCore;
 using SwapMe.Application.Config;
 using SwapMe.Extensions;
-using SwapMe.Infrastructure.Sql.Contexts;
-using SwapMe.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
 
 // Add services to the container.
-builder.Services.RegisterServices();
-builder.Services.AddDbContext<UsersContext>(options => options.UseSqlServer(configuration.GetConnectionString("SwapMeUsers"),
-    b => b.MigrationsAssembly(configuration.GetValue<string>("MigrationsAssembly"))));
+builder.Services
+    .RegisterServices()
+    .ConfigureDbContexts(configuration)
+    .ConfigureAuthorization(builder);
 
 builder.Services.AddControllers();
-builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true); 
+builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Map config
-builder.Services.Configure<AppSettingsConfig>(
+builder.Services.Configure<JwtSettings>(
     builder.Configuration.GetSection("Jwt"));
 
 var app = builder.Build();
@@ -40,8 +38,7 @@ app.UseCors(x => x
     .AllowAnyHeader());
 
 app.UseAuthorization();
-
-app.UseMiddleware<JwtMiddleware>();
+app.UseAuthentication();
 
 app.MapControllers();
 
