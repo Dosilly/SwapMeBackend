@@ -37,14 +37,11 @@ public class AuthenticationRequestHandler : IAuthenticationRequestHandler
                 {
                     Subject = new ClaimsIdentity(new[]
                     {
-                        new Claim("Id", Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Sub, user.Login),
                         new Claim(JwtRegisteredClaimNames.Email, user.UserContact?.Email ?? string.Empty),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                     }),
                     Expires = DateTime.UtcNow.AddMinutes(5),
-                    Issuer = _jwtSettings.Issuer,
-                    Audience = _jwtSettings.Audience,
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
                 };
                 var tokenHandler = new JwtSecurityTokenHandler();

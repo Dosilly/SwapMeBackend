@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SwapMe.Application.Handlers.Abstractions;
 using SwapMe.Application.Handlers.Users.Requests;
 
@@ -19,6 +21,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost("create")]
+    [AllowAnonymous]
     public async Task<IActionResult> PostAsync([FromBody] CreateUserRequest request)
     {
         _logger.LogInformation("Received request for new user creation");
@@ -32,5 +35,12 @@ public class UsersController : ControllerBase
 
         _logger.LogWarning("Validation not passed due to: \r\n {Errors}", result.Errors.ToString());
         return BadRequest(result.Errors.ToArray());
+    }
+
+    [HttpGet]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public Task<string> GetAll()
+    {
+        return Task.FromResult("Hello");
     }
 }
